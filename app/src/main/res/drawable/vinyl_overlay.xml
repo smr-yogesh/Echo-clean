@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Vinyl record drawn over the album art: black outer ring (the art shows through the middle
+     as the record label), groove lines, label edge and spindle hole. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape
+            android:innerRadiusRatio="3.2"
+            android:shape="ring"
+            android:thicknessRatio="5.333"
+            android:useLevel="false">
+            <solid android:color="#F0090A0C" />
+        </shape>
+    </item>
+    <item>
+        <inset android:inset="2%">
+            <shape android:shape="oval">
+                <solid android:color="@android:color/transparent" />
+                <stroke android:width="0.5dp" android:color="#26FFFFFF" />
+            </shape>
+        </inset>
+    </item>
+    <item>
+        <inset android:inset="4%">
+            <shape android:shape="oval">
+                <solid android:color="@android:color/transparent" />
+                <stroke android:width="0.5dp" android:color="#26FFFFFF" />
+            </shape>
+        </inset>
+    </item>
+    <item>
+        <inset android:inset="6%">
+            <shape android:shape="oval">
+                <solid android:color="@android:color/transparent" />
+                <stroke android:width="0.5dp" android:color="#26FFFFFF" />
+            </shape>
+        </inset>
+    </item>
+    <item>
+        <inset android:inset="8%">
+            <shape android:shape="oval">
+                <solid android:color="@android:color/transparent" />
+                <stroke android:width="0.5dp" android:color="#26FFFFFF" />
+            </shape>
+        </inset>
+    </item>
+    <item>
+        <inset android:inset="10%">
+            <shape android:shape="oval">
+                <solid android:color="@android:color/transparent" />
+                <stroke android:width="0.5dp" android:color="#26FFFFFF" />
+            </shape>
+        </inset>
+    </item>
+    <item>
+        <inset android:inset="12%">
+            <shape android:shape="oval">
+                <solid android:color="@android:color/transparent" />
+                <stroke android:width="0.5dp" android:color="#26FFFFFF" />
+            </shape>
+        </inset>
+    </item>
+    <item>
+        <inset android:inset="14%">
+            <shape android:shape="oval">
+                <solid android:color="@android:color/transparent" />
+                <stroke android:width="0.5dp" android:color="#26FFFFFF" />
+            </shape>
+        </inset>
+    </item>
+    <item>
+        <inset android:inset="16%">
+            <shape android:shape="oval">
+                <solid android:color="@android:color/transparent" />
+                <stroke android:width="0.5dp" android:color="#26FFFFFF" />
+            </shape>
+        </inset>
+    </item>
+    <item>
+        <inset android:inset="18.5%">
+            <shape android:shape="oval">
+                <solid android:color="@android:color/transparent" />
+                <stroke android:width="1.5dp" android:color="#99000000" />
+            </shape>
+        </inset>
+    </item>
+    <item
+        android:width="10dp"
+        android:height="10dp"
+        android:gravity="center">
+        <shape android:shape="oval">
+            <solid android:color="@color/neu_bg" />
+            <stroke android:width="1dp" android:color="@color/neu_hi" />
+        </shape>
+    </item>
+</layer-list>

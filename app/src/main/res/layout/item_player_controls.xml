@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_rounded_item_corner"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <!-- Title / artist (centered, as in the sketch) + like button -->
+    <LinearLayout
+        android:id="@+id/trackTitleRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="24dp">
+
+        <!-- shown (instead of the cover) while a video is playing -->
+        <View
+            android:id="@+id/trackCoverPlaceHolder"
+            android:layout_width="@dimen/collapsed_cover_size"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="12dp"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clipToPadding="false">
+
+            <LinearLayout
+                android:id="@+id/trackTextColumn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginHorizontal="56dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/trackTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:minHeight="32dp"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="Sheela is a punkrocker" />
+
+                <TextView
+                    android:id="@+id/trackArtist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.7"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="2"
+                    android:paddingBottom="4dp"
+                    android:textAlignment="center"
+                    android:textColorLink="@color/button_player"
+                    android:textSize="14sp"
+                    tools:text="The Ramones" />
+            </LinearLayout>
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/trackHeart"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="end|center_vertical"
+                android:background="@drawable/neu_circle_light"
+                android:button="@drawable/anim_heart_40dp"
+                android:contentDescription="@string/like"
+                android:gravity="center"
+                app:buttonTint="@color/icon_on_light" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- 00:37 [ waveform ] 01:56 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="24dp">
+
+        <TextView
+            android:id="@+id/trackCurrentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:maxLines="1"
+            android:textSize="12sp"
+            tools:text="00:37" />
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1">
+
+            <com.cleanui.echo.ui.player.WaveformView
+                android:id="@+id/waveform"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center" />
+
+            <!-- kept for its progress/colour API; the waveform replaces it visually -->
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/bufferBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:alpha="0.5"
+                android:progress="40"
+                android:visibility="gone"
+                app:indicatorColor="?attr/colorTertiary"
+                app:indicatorTrackGapSize="0dp"
+                app:trackColor="?attr/colorOnSurface"
+                app:trackThickness="2dp" />
+
+            <!-- Transparent touch layer; its thumb is the playhead line over the waveform -->
+            <com.google.android.material.slider.Slider
+                android:id="@+id/seekBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/seekbar"
+                android:value="0.5"
+                app:haloColor="@android:color/transparent"
+                app:haloRadius="0dp"
+                app:labelBehavior="gone"
+                app:minTouchTargetSize="56dp"
+                app:thumbColor="?attr/colorTertiary"
+                app:thumbElevation="0dp"
+                app:thumbHeight="44dp"
+                app:thumbWidth="4dp"
+                app:trackColorActive="@android:color/transparent"
+                app:trackColorInactive="@android:color/transparent"
+                app:trackHeight="4dp"
+                app:trackStopIndicatorSize="0dp" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/trackTotalTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:alpha="0.66"
+            android:maxLines="1"
+            android:textSize="12sp"
+            tools:text="01:56" />
+    </LinearLayout>
+
+    <!-- shuffle | previous | PLAY | next | repeat -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:paddingHorizontal="16dp">
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/trackShuffle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ripple_44dp"
+            android:button="@drawable/anim_shuffle"
+            android:contentDescription="@string/shuffle"
+            android:gravity="center"
+            app:buttonTint="@color/button_player"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/trackPrevious"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/neu_circle_light"
+            android:contentDescription="@string/previous"
+            android:enabled="false"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:outlineProvider="none"
+            android:padding="0dp"
+            app:icon="@drawable/ic_skip_previous_40dp"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="28dp"
+            app:iconTint="@color/icon_on_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/playPauseContainer"
+            app:layout_constraintStart_toEndOf="@+id/trackShuffle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/playPauseContainer"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/playingIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:indeterminate="true"
+                app:indicatorSize="84dp"
+                app:trackThickness="3dp" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/trackPlayPause"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_gravity="center"
+                android:background="@drawable/neu_circle_light"
+                android:button="@drawable/anim_play_pause_48dp"
+                android:checked="true"
+                android:contentDescription="@string/play"
+                android:gravity="center"
+                app:buttonTint="@color/icon_on_light"
+                tools:ignore="DuplicateSpeakableTextCheck" />
+        </FrameLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/trackNext"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/neu_circle_light"
+            android:contentDescription="@string/next"
+            android:enabled="false"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:outlineProvider="none"
+            android:padding="0dp"
+            app:icon="@drawable/ic_skip_next_40dp"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconSize="28dp"
+            app:iconTint="@color/icon_on_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/trackRepeat"
+            app:layout_constraintStart_toEndOf="@id/playPauseContainer"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/trackRepeat"
+            style="?attr/materialIconButtonStyle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ripple_44dp"
+            android:contentDescription="@string/repeat"
+            android:outlineProvider="none"
+            android:padding="8dp"
+            app:icon="@drawable/ic_repeat_to_repeat_one_40dp"
+            app:iconSize="28dp"
+            app:iconTint="@color/amoled_fg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/trackSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:minHeight="32sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/amoled_fg"
+        android:textSize="12sp"
+        tools:text="ALL TRACKS" />
+</LinearLayout>

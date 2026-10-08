@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="app_color">#9E9E9E</color>
+    <color name="app_color_highlight">#F4F6F8</color>
+    <color name="app_color_shadow">#B8BEC6</color>
+    <color name="amoled_bg">@color/white</color>
+    <color name="amoled_bg_semi">#54FFFFFF</color>
+    <color name="amoled_fg">@color/black</color>
+    <color name="amoled_fg_semi">#14000000</color>
+    <!-- Neumorphic ("soft UI") bright-dark palette: neutral greys, no hue -->
+    <color name="neu_bg">#FF2B2F36</color>
+    <color name="neu_surface">#FF343941</color>
+    <color name="neu_surface_light">#FF3F454E</color>
+    <color name="neu_surface_dark">#FF30343B</color>
+    <color name="neu_hi">#FF4C535E</color>
+    <color name="neu_lo">#FF1B1E22</color>
+    <color name="neu_inset">#FF24272D</color>
+    <color name="neu_text_secondary">#FFAEB5BF</color>
+    <!-- Light raised plates that carry high-contrast black icons -->
+    <color name="neu_light_hi">#FFFFFFFF</color>
+    <color name="neu_light_a">#FFF4F6F8</color>
+    <color name="neu_light_b">#FFCDD2D8</color>
+    <color name="neu_light_pressed_a">#FFC4CAD1</color>
+    <color name="neu_light_pressed_b">#FFE6E9ED</color>
+    <color name="icon_on_light">#FF0B0D10</color>
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <style name="Default" parent="Base.Theme.Echo">
+        <item name="navBarForeground">?colorOnPrimary</item>
+        <item name="navBarBackground">?colorControlActivated</item>
+        <item name="echoBackground">@color/neu_bg</item>
+        <item name="navBackground">@color/neu_surface</item>
+    </style>
+</resources>
